@@ -1,0 +1,30 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string solution(int a, int b) {
+    string answer = "";
+    string month[7] = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
+    int Bmax;
+    int count=5;
+    if(a==1 || a==3 || a==5 ||a==7 || a==8|| a==10 || a==12) {
+        Bmax =31;
+    }else{
+        Bmax= 29;
+    }
+    //1월 31  2월 29  3월 31 4월 30 5월 31 6월 30 7월 31 8월 30 9월 30 10월 31 11월 30 12월 31
+    
+    
+    for(int i=0;i<a*30 + b;i++)
+    {
+        if(count ==7){
+            count =0;
+            continue;
+        }
+        
+        answer = month[count];
+        count++;
+    }    
+    return answer;
+}
