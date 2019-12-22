@@ -1,0 +1,24 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string solution(int a, int b) {
+    string answer = "";
+    int count =5;
+    string day[7] = {"SUN", "MON", "TUE", "WED","THU", "FRI", "SAT"};
+    // 1 31 2 29 / 3/31  /4/30 / 5/31 / 6/30 / 7/31 8/31 /930 /1031 / 1130 / 1231
+    
+    for(int i =1; i<a* 30 +b; i++){
+        
+        if(count ==7){
+            count =0;
+            continue;
+        }
+            
+        
+        count++;
+    }
+    answer = day[count];
+    return answer;
+}

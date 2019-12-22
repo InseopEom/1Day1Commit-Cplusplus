@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+int solution(int n)
+{
+    int answer = 0;
+string num;
+    num = n;
+    cout<<num<<endl;    
+    
+    //배열로 하나하나 저장해서 다시 인트로 변환후 + 작업 
+    return answer;
+}
