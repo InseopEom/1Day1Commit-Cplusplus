@@ -1,0 +1,31 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(string skill, vector<string> skill_trees) {
+    int answer = 0;
+    int count =0;
+    int check =0;
+    vector<char> skill_order;
+    for(int i=0; i<skill.size(); i++){
+        skill_order.push_back(skill.at(i)); 
+    }
+    
+    for(int j=0; j<skill_trees.size(); j++){
+        
+        for(int k=0; k<skill_trees.at(j).size();k++){
+            
+            if(skill_order[count] ==skill_trees.at(j).at(k)){
+                count++;
+            }
+            
+          
+           
+        }
+        count =0;
+    }
+    
+    
+    return answer;
+}
