@@ -1,0 +1,16 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+bool solution(string s) {
+    bool answer = true;
+    int num;
+    atoi(s.c_str()) && (s.size()==4 ||s.size()==6) ? num=atoi(s.c_str()) : answer =false;
+    
+    if(num>1000)
+        answer=true;
+    else
+        answer =false;
+    return answer;
+}
