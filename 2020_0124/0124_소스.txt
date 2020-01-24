@@ -1,0 +1,33 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string solution(string s, int n) {
+    string answer = "";
+    vector<char> upper={'A', 'B', 'C', 'D', 'E','F','G','H','I', 'J', 'K', 'L','M','N','O','P','Q','R','S','T', 'U', 'W', 'X','Y','Z' };
+    
+    vector<char> lower= {'a', 'b', 'c', 'd', 'e','f','g','h','i', 'j', 'k', 'l','m','n','o','p','q','r','s','t', 'u', 'w', 'x','y','z' };
+    
+    vector<char> inputchar;
+    for(int i=0; i<s.size();i++){
+        inputchar.push_back(s[i]);
+    }
+    
+    for(int k=0; k<inputchar.size();k++){
+        if(inputchar[k]==' ')
+            answer.push_back(' ');
+        
+        for(int j=0; j<upper.size(); j++){
+            if(inputchar[k]==upper[j]){
+                answer.push_back(upper[(j+n)%25]);
+            }
+            if(inputchar[k]==lower[j]){
+                answer.push_back(lower[(j+n)%25]);
+            }
+        }
+    }
+    
+    
+    return answer;
+}
