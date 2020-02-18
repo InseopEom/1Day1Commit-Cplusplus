@@ -1,0 +1,37 @@
+#include <string>
+#include <vector>
+#include <queue> 
+using namespace std;
+
+vector<int> solution(vector<int> progresses, vector<int> speeds) {
+    vector<int> answer;
+    vector<int> count;
+    int week= 0;
+    int num= 0;
+    bool check =true;
+    for(int i=0; i<progresses.size(); i++){
+        for(int j=progresses[i]; j<100; j+=speeds[i]){
+            week++;
+        }
+        count.push_back(week);
+        week = 0;
+    }
+    
+    for(int i = 0 ;i<count.size(); i++){
+        week  =count[i];
+        for(int k=i; k<count.size(); k++){
+            if(count[k] <=week && check ==true){
+                num++;
+            }else{
+                check = false;
+            }
+            
+        }
+        check =true;
+        answer.push_back(num);
+        
+    count.erase(count.begin(), count.begin()+num-1);
+        num = 0;
+    }
+    return answer;
+}
