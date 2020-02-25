@@ -1,0 +1,17 @@
+#include <string>
+#include <vector>
+#include<algorithm>
+
+using namespace std;
+
+long long solution(long long n) {
+    long long answer = 0;
+    answer = sqrt(n);
+    if(pow(answer, 2) ==n){
+       answer++;
+        return answer*answer;
+    }else{
+        return -1;
+    }
+    return answer;
+}
