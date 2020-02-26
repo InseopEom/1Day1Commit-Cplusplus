@@ -1,0 +1,21 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+vector<int> solution(vector<int> arr) {
+    vector<int> answer;
+int a = *min_element(arr.begin(), arr.end());
+ if(arr.size()>1){
+    for(int i=0; i<arr.size(); i++){
+        if(arr[i] == a){
+            arr.erase(arr.begin()+i);
+            answer = arr;
+            break;
+        }
+    }
+ }else{
+     answer.push_back(-1);
+ }
+    return answer;
+}
