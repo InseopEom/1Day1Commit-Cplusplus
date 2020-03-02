@@ -1,0 +1,31 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int n, vector<int> lost, vector<int> reserve) {
+    int answer = 0;
+    int check=0;
+    int count=0;
+    for(int i=0; i<lost.size(); i++){
+        check =lost[i];
+        for(int j=0; j<reserve.size(); j++){
+            if(--check == reserve[j]){
+                reserve[j] =0;
+                count++;
+                break;
+            }
+        }
+        
+        for(int k=0; k<reserve.size(); k++){
+            if(++check == reserve[k]){
+                reserve[k] =0;
+                count ++;
+                break;
+            }
+        }
+    }
+    
+    answer =n -lost.size() +count;
+    return answer;
+}
