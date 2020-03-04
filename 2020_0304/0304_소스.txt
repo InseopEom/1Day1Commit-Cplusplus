@@ -1,0 +1,25 @@
+#include <string>
+#include <vector>
+#include <stack>
+
+using namespace std;
+
+int solution(string arrangement) {
+    int answer = 0;
+        stack<string> stk;
+
+        for(int i=0; i<arrangement.length(); i++) {
+            if(arrangement[i]== '(') {
+                if(i+1 < arrangement.length() && arrangement[i+1] == ')') {
+                    answer += stk.size();
+                    i++;
+                } else {
+                    stk.push("(");
+                }
+            } else if(arrangement[i] == ')'){
+                stk.pop();
+                answer++;
+            }
+        }
+        return answer;
+    }
