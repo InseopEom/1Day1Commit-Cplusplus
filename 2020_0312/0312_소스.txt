@@ -1,9 +1,22 @@
 #include <string>
 #include <vector>
-
+#include <algorithm>
+#include <sstream>
 using namespace std;
 
 string solution(string s) {
-    string answer = "";
+string answer ="";
+    stringstream stream(s);
+    vector<int> num;
+    
+    while(stream>>s){
+        num.push_back(atoi(s.c_str()));
+    }
+    
+answer +=to_string(*min_element(num.begin(), num.end()));
+answer += " ";
+answer += to_string(*max_element(num.begin(), num.end()));
+   
+    
     return answer;
 }
