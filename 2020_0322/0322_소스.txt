@@ -1,0 +1,22 @@
+#include <string>
+#include <vector>
+#include <unordered_map>
+#include <iostream>
+using namespace std;
+
+vector<int> solution(vector<string> genres, vector<int> plays) {
+    vector<int> answer;
+    
+    unordered_map<string, int> h1;
+    unordered_map<string, int> ::iterator Fin;
+    for(int i=0; i<genres.size(); i++){
+         Fin = h1.find(genres[i]);
+        if(Fin != h1.end()){
+            Fin->second += plays[i];
+        }else{
+            h1.insert(unordered_map<string, int>::value_type(genres[i], plays[i]));
+        }
+    }
+    
+    return answer;
+}
