@@ -1,0 +1,34 @@
+#include <string>
+#include <vector>
+#include <queue>
+#include <iostream>
+using namespace std;
+
+long long solution(int n, vector<int> works) {
+    long long answer = 0;
+    int sum= 0;
+    priority_queue<int> q1(works.begin(), works.end());
+    for(int i=0; i<works.size(); i++){
+        sum+=works[i];
+    }
+    
+    if(sum<n){
+        return 0;
+    }else{
+        
+    
+    
+    for(int i=0; i<n; i++){
+        int num = q1.top();
+        q1.pop();
+        q1.push(num-1);
+        
+    }
+
+    while(!q1.empty()) {
+        answer += (long long)q1.top() * (long long)q1.top();
+        q1.pop();
+    }
+    return answer;
+    }
+}
