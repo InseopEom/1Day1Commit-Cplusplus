@@ -1,0 +1,25 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+long long solution(int N) {
+    long long answer = 0;
+    vector<long long> tile;
+    //n *2 + (n-1) *2
+    
+    if(N==1)
+        return (long long)4;
+    if(N==2)
+        return (long long)6;
+    tile.push_back(1);
+    tile.push_back(1);
+    
+    for(int i=2; i<=N; i++){
+        tile.push_back(tile[i-1] + tile[i-2]);
+    }
+    
+    answer = (tile[N] *2) + (tile[N-1] *2);
+    
+    return answer;
+}
