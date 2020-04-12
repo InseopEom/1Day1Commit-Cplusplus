@@ -1,0 +1,36 @@
+#include <string>
+#include <vector>
+#include <iostream>
+ 
+using namespace std;
+ 
+string dec2N(int d, int n) {
+    string res = "";
+    char code[]= {'0', '1', '2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+    
+    while (d/n != 0) {
+        res = code[d%n] + res;
+        d /=n;
+    }
+ 
+    res = code[d%n] + res;
+    return res;
+}
+string solution(int n, int t, int m, int p) {
+    string answer = "";
+    
+    string tmp = "";
+    for (int i =0; i <t*m ; i++) {
+            //16진수로 출력한다. 
+         tmp += dec2N(i, n);
+    }
+    // cout << tmp << '\n';
+    int cnt = 0;
+    for (int i = p-1;  i < tmp.length();) {
+        answer += tmp.substr(i,1);
+        if (cnt + 1 == t) break;
+        cnt++;
+        i += m;
+    }
+    return answer;
+}
