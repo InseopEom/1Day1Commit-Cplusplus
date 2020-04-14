@@ -1,0 +1,37 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+ 
+vector<int> setAlign(int n, long long cnt)
+{
+	vector<int> answer, people;
+	long long fec = 1;	cnt--;
+ 
+	for(int i = 1; i <= n; i++) 
+	{
+		fec *= i;
+		people.push_back(i);
+	}
+	
+	while(n > 0)
+	{
+		fec = fec / n--;
+		answer.push_back(people.at( cnt / fec ));
+		people.erase(people.begin() + cnt / fec);
+		cnt %= fec;
+	}
+ 
+	return answer;
+}
+int main()
+{
+	int testn = 3;
+	long long testcnt = 5;
+	vector<int> testAnswer = setAlign(testn,testcnt);
+	// 아래는 테스트로 출력해 보기 위한 코드입니다.
+ 
+	for(int i=0; i< testAnswer.size(); i++)
+	{
+		cout << testAnswer[i] << " ";
+	}
+}
