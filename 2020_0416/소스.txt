@@ -1,0 +1,44 @@
+#include <string>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <queue>
+#define USED -1
+using namespace std;
+
+int get_parent(vector<int> p, int i){
+    while(p[i]>0) i=p[i];
+    return i;
+}
+bool cycle_check(vector<int> p, int i, int j){
+    int p_i = get_parent(p,i);
+    int p_j = get_parent(p,j);
+    if(p_i==p_j) return true; // cycle
+    else return false; // not cycle
+}
+bool compare(vector<int> a, vector<int> b){
+    return (a[2]<b[2]);
+}
+int solution(int n, vector<vector<int>> costs) {
+    int answer = 0;
+    vector<int> p(n, -1);
+    sort(costs.begin(),costs.end(),compare);
+    int now=0, cnt=0;
+    
+    // 탐색
+    while(cnt != n-1){
+        int min = costs[now][2];
+        int min_i = costs[now][0], min_j = costs[now][1];
+        
+        // 사이클 체크
+        if(!cycle_check(p,min_i,min_j)){
+            // 부모 추가(i가 j보다 무조건 작으므로)
+            int p_i =get_parent(p,min_i), p_j = get_parent(p,min_j);
+            p[p_j]= p_i;
+            answer+=min;
+            cnt++;
+        }
+        now++;
+    }
+    return answer;
+}
