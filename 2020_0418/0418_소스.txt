@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int N, answer =0;
+    cin>>N;
+    
+    while(1){
+        if(N%5==0){
+            answer += N/5;
+                
+            break;
+        }
+        
+        N-=3;
+        answer++;
+        
+        if(N<0){
+            answer = -1;
+
+            break;
+        }
+    }
+                        cout<<answer;
+
+}
