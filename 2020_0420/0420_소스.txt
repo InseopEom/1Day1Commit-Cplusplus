@@ -13,6 +13,3 @@ int main() {
     cout << d[n] << endl;
     return 0;
 }
-
-
-출처: https://suriisurii.tistory.com/23 [surisuri]
