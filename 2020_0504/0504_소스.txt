@@ -1,0 +1,34 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+int main() {
+
+	int N, M, tmp;
+	vector<int> num;
+	vector<int> answer;
+	cin >> N >> M;
+
+	for (int i = 0; i < N; i++) {
+		cin >> tmp;
+		num.push_back(tmp);
+	}
+		
+	for (int i = 0; i < num.size()-2; i++) {
+		
+		for (int j = i+1; i < num.size()-1; i++) {
+
+			for (int k = j + 1; k < num.size(); k++) {
+				if ((num[i] + num[j] + num[k]) <= M) {
+					answer.push_back(num[i] + num[j] + num[k]);
+				}
+				
+			}
+		}
+	}
+
+
+	cout<< *max_element(answer.begin(), answer.end());
+
+}
