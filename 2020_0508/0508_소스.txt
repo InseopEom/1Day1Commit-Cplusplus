@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	string str;
+	int num, inputnum;
+	cin >> num;
+
+	for (int i = 0; i < num; i++) {
+		cin >> inputnum >> str;
+
+		for (int j = 0; j < str.length(); j++) {
+			for (int k = 0; k < inputnum; k++) {
+				cout << str[j];
+			}
+		}
+		cout << endl;
+
+	}
+
+}
