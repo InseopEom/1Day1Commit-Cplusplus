@@ -1,0 +1,50 @@
+#include <iostream>
+
+using namespace std;
+
+ 
+
+int main(void)
+
+{
+
+     
+
+        int N;
+
+        cin >> N;
+
+ 
+
+        int cur = 1;
+
+        int result = 1;
+
+        int inc = 6;
+
+        while (1)
+
+        {
+
+                 if (N <= cur)
+
+                         break;
+
+ 
+
+                 result++;
+
+                 cur += inc;
+
+                 inc += 6;
+
+        }
+
+        cout << result << endl;
+
+        return 0;
+
+}
+
+
+
