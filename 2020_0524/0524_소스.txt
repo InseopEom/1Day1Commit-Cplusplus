@@ -1,0 +1,116 @@
+#include <iostream>
+
+#include <algorithm>
+
+#include <cstring> //memset
+
+using namespace std;
+
+ 
+
+const int MAX = 1000;
+
+ 
+
+int N;
+
+int arr[MAX];
+
+int fCache[MAX], rCache[MAX]; //frontLISCache, rearLISCache
+
+ 
+
+//기존에 작성한 LIS는 해당 인덱스로부터 시작한 LIS의 길이를 cache에 저장
+
+//하지만 이 문제에서는 해당 인덱스를 마지막으로 하는 LIS의 길이를 cache에 저장
+
+void frontLIS(void)
+
+{
+
+        for (int i = 0; i < N; i++)
+
+        {
+
+               fCache[i] = 1; //자기자신 포함
+
+               for (int j = 0; j <= i; j++)
+
+                       if (arr[i] > arr[j] && fCache[j] + 1 > fCache[i])
+
+                              fCache[i] = fCache[j] + 1;
+
+        }
+
+}
+
+ 
+
+//뒤에서부터 LIS
+
+void rearLIS(void)
+
+{
+
+        for (int i = N - 1; i >= 0; i--)
+
+        {
+
+               rCache[i] = 1; //자기자신 포함
+
+               for (int j = N - 1; j >= i; j--)
+
+                       if (arr[i] > arr[j] && rCache[j] + 1 > rCache[i])
+
+                              rCache[i] = rCache[j] + 1;
+
+        }
+
+}
+
+ 
+
+int main(void)
+
+{
+
+        cin >> N;
+
+        if (N<1 || N>MAX)
+
+               exit(-1);
+
+ 
+
+        for (int i = 0; i < N; i++)
+
+               cin >> arr[i];
+
+       
+
+        frontLIS();
+
+        rearLIS();
+
+        int result = fCache[0] + rCache[0];
+
+        for (int i = 1; i < N; i++)
+
+        {
+
+               int candidate = fCache[i] + rCache[i];
+
+               if (result < candidate)
+
+                       result = candidate;
+
+        }
+
+        cout << result - 1 << endl; //두 캐시의 합이 최대인 인덱스에서 중복
+
+        return 0;
+
+}
+
+
+
