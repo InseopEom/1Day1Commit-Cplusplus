@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+int Factori(int num) {
+	if (num == 0) {
+		return 1;
+	}
+	return num *Factori(num-1);	
+}
+
+int main() {
+	int F;
+	cin >> F;
+	cout << Factori(F);
+
+}
