@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int str[26],cnt,T,c;
+int main(){
+    string k;
+    cin >> N;
+    for (int i = 0; i < N; i++)
+    {
+        cin >> k;
+        c = 0;
+        for (int i = 0; i < k.size(); i++)
+        {
+            if (str[k[i] - 97]>=1 && k[i]!=k[i-1] && i!=0)
+            {
+                c = 1;
+                break;
+            }
+            str[k[i] - 97]++;
+        }
+        if (c==0)
+        {
+            cnt++;
+        }
+        for (int i = 0; i < 26; i++)
+        {
+            str[i] = 0;
+        }
+    }
+    cout << cnt;
+}
+
+
