@@ -1,0 +1,52 @@
+#include <string>
+#include <vector>
+#include<cstring>
+#include<iostream>
+#define Range 10000000
+using namespace std;
+string n_;
+int cnt = 0;
+int prime[Range];  // prime[i] == 0 이면 i 는 소수.
+int cals[Range+1];
+int visited[Range+1];
+void call(int level){
+    int p = 0;
+    for(int i=1; i<=level; i++){
+        p = p*10 + n_[cals[i]]-'0';
+    }
+    if(prime[p] == 0){
+        prime[p] = 1;
+        cnt++;
+    }
+    return;
+}
+
+void Back_tracking(int level){ // 조합을 찾아서 넘겨줌
+    if(level > n_.length()) return;
+
+    if(level >=1){
+        call(level);
+    }
+    for(int i=0; i<n_.length(); i++){
+        if(visited[i] == 0){
+            cals[level+1] = i;
+            visited[i] = 1;
+            Back_tracking(level+1);
+            visited[i] = 0;
+        }
+    }
+    return;
+}
+int solution(string numbers) {
+    n_ = numbers;
+    int answer = 0;
+    prime[0] = prime[1] = 1;
+    for(int i=2; i<Range; i++){
+        for(int j=i*2; j<Range; j = j+i){
+            prime[j] = 1;
+        }
+    }
+    Back_tracking(0);
+
+    return cnt;
+}
