@@ -1,0 +1,27 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <functional>
+
+using namespace std;
+
+int solution(vector<int> people, int limit) {
+    int num = people.size();
+    sort(people.begin(), people.end(), greater<int>());
+    int left = 0;
+    int right = num - 1;
+    int boatNum = 0;
+    if(num==1) return 1;
+    while(left<right){
+        if(people[left]+people[right]<=limit){
+            right--;
+        }
+        left++;
+        boatNum++;
+    }
+    if(left==right){
+        boatNum++;
+    }
+
+    return boatNum;
+}
