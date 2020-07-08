@@ -1,0 +1,40 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+using namespace std;
+
+int solution(vector<int> budgets, int M) {
+    int answer = 0;
+    int max =0;
+    max=*max_element(budgets.begin(), budgets.end());
+    sort(budgets.begin(), budgets.end());
+    for(int i=0; i<budgets.size(); i++){
+        answer +=budgets[i];        
+    }
+    
+    if(answer <=M){
+        return budgets[budgets.size()-1];
+    }else{
+        while(true){
+            int sum =0;
+            for(int i=0; i<budgets.size();i++){
+                if(budgets[i] > max){
+                     sum +=max;
+                }else{
+                     sum +=budgets[i];
+                }
+               
+            }
+            
+            if(sum >M){
+                max--;
+            }else{ //답
+                return max;
+            }
+        }
+        
+    }
+    
+    return answer;
+}
