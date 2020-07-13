@@ -1,0 +1,39 @@
+#include <iostream>
+
+#include <vector>
+
+#include <algorithm>
+
+using namespace std;
+
+
+
+int main(void)
+
+{
+	int N, M, tmp;
+	vector<int> Nnum;
+	vector<int> Mnum;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> tmp;
+		Nnum.push_back(tmp);
+	}
+	
+	sort(Nnum.begin(), Nnum.end());
+	cin >> M;
+	//상근이 번호 찾기
+	for (int i = 0; i < M; i++) {
+		cin >> tmp;
+		Mnum.push_back(tmp);
+	}
+
+	for (int i = 0; i < Mnum.size(); i++) {
+		cout << upper_bound(Nnum.begin(), Nnum.end(), Mnum[i]) - lower_bound(Nnum.begin(), Nnum.end(), Mnum[i])<<" ";
+	}
+   
+}
+
+
