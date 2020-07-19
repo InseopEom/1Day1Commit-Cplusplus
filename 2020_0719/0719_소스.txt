@@ -1,0 +1,24 @@
+#include <string>
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int solution(int m, int n, vector<vector<int>> puddles) {
+    int answer = 0;
+    vector<int>right(m, 1);
+    vector<vector<int>>map(n, right);
+
+for(int i=0; i<puddles.size(); i++){
+ map[puddles[i][1]][puddles[i][0]]=0;
+}
+    for(int i=0; i<m; i++){
+        for(int j=0; j<n; j++){
+            if(map[j][i] !=0){
+                map[j][i] = (map[j-1][i] + map[j][i-1]) %1000000007;
+            }
+        }
+    }
+    
+    answer  = map[n][m];
+    return answer;
+}
