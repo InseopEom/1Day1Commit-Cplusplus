@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+
+int Tile(int num) {
+	if (num == 0) return 0;
+	else if (num == 1) return 1;
+	else {
+		vector<int> Tnum(num+1);
+		Tnum[0] = 1;
+        Tnum[1] = 1;
+		
+	
+		
+		
+		for (int i = 2; i <= num; i++) {
+			Tnum[i] = (Tnum[i - 2] + Tnum[i - 1])%15746;
+		}
+
+		return Tnum[num] %15746;
+	}	
+}
+
+int main(void)
+
+{
+	int N;
+	cin >> N;
+	cout << Tile(N);
+
+   
+}
+
+
