@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+
+int main(void)
+
+{
+	int N, M;
+	cin >> N;
+	vector<vector<int>> RGB;
+	for (int i = 0; i < N; i++) {	
+		vector<int> num;
+
+		for (int j = 0; j < 3; j++) {
+			cin >> M;
+			num.push_back(M);
+		}
+		RGB.push_back(num);
+	}
+
+
+	for (int i = 1; i < RGB.size(); i++) {
+		for (int j = 0; j < RGB[i].size(); j++) {
+			if (j == 0) {
+				RGB[i][j] += min(RGB[i-1][1], RGB[i-1][2]);
+
+			}
+			else if (j == 1) {
+				RGB[i][j] += min(RGB[i-1][0], RGB[i-1][2]);
+
+			}
+			else {
+				RGB[i][j] += min(RGB[i-1][0], RGB[i-1][1]);
+			}
+		}
+		
+	}
+	cout << min(min(RGB[N - 1][0], RGB[N - 1][1]), RGB[N - 1][2]);
+   
+
+
+}
+
+
