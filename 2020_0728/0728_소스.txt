@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+
+int main(void)
+
+{
+	int N, M;
+	cin >> N;
+	vector<vector<int>> Tri;
+
+
+
+	for (int i = 1; i <= N; i++) {	
+		vector<int> num;
+
+		for (int j = 0; j < i; j++) {
+			int k;
+
+			cin >> k;
+			num.push_back(k);
+		}
+		Tri.push_back(num);
+	}
+
+
+	for (int i = 1; i < Tri.size(); i++) {
+		for (int j = 0; j <=i; j++) {
+		
+			if (j == 0) { //좌측 끝
+				Tri[i][j] += Tri[i - 1][j];
+			}
+			else if (i == j) { //우측 끝
+				Tri[i][j] += Tri[i - 1][j - 1];
+			}
+			else {
+				Tri[i][j] += max(Tri[i - 1][j], Tri[i - 1][j - 1]);
+			}
+			
+		}
+		
+   }
+
+
+
+	cout << *max_element(Tri[Tri.size() - 1].begin(), Tri[Tri.size() - 1].end());
+
+}
+
+
