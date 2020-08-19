@@ -1,0 +1,36 @@
+#include <string>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+
+
+int solution(int n, vector<int> lost, vector<int> reserve) {
+
+    // erase 비용이 더 큼
+    int sizeReserve = reserve.size();
+    int sizeLost = lost.size();
+    int findCounter = 0;
+    int victim = 0;
+    for(int victimIdx=0; victimIdx< sizeLost; victimIdx++){
+        victim = lost[victimIdx];
+        for(int i =0; i< sizeReserve; i++){
+            if(reserve[i] == victim){
+                reserve[i] = -1;
+                findCounter++;
+                break;
+            }else if( reserve[i] == victim-1){
+                reserve[i] = -1;
+                findCounter++;
+                break;
+            }else if( reserve[i] == victim+1){
+                reserve[i] = -1;
+                findCounter++;
+                break;
+            }
+        }
+    }
+
+    return n - (sizeLost - findCounter);
+}
