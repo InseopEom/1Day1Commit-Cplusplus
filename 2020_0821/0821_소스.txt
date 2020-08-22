@@ -1,0 +1,30 @@
+using namespace std;
+int N, C, arr[200005];
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cin >> N >> C;
+	for (int i = 1; i <= N; i++) {
+		cin >> arr[i];
+	}
+	sort(arr + 1, arr + N + 1);
+	int lo = arr[1], hi = arr[N], mid, sol;
+	while (lo <= hi) {
+		mid = (lo + hi) / 2;
+		int cnt = C - 1, loc = arr[1];
+		while (cnt > 0) {
+			loc = *lower_bound(arr + 1, arr + N + 1, loc + mid);
+			cnt--;
+			if (loc == 0) {
+				cnt++;
+				break;
+			}
+		}
+		if (cnt == 0) {
+			sol = mid;
+			lo = mid + 1;
+		}
+		else hi = mid - 1;
+	}
+	cout << sol;
+}
