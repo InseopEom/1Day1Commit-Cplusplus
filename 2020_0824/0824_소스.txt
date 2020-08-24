@@ -1,0 +1,42 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int N, number;
+int answer = 1e9;
+
+void dfs(int num, int count) {
+    if (count > 8)
+        return;
+    if (count >= answer)
+        return;
+    if ((count < answer) && (num == number)) {
+        answer = count;
+        return;
+    }
+
+    int temp = 0;
+    for (int i = 0; i < 7; i++) {
+        temp = temp * 10 + N;
+        dfs(temp + num, count + i + 1);
+        dfs(temp * num, count + i + 1);
+        if (num != 0) {
+            dfs(temp / num, count + i + 1);
+        }
+        dfs(num / temp, count + i + 1);
+        dfs(temp + num, count + i + 1);
+        dfs(temp - num, count + i + 1);
+        dfs(num - temp, count + i + 1);
+    }
+}
+int solution(int N_, int number_) {
+    N = N_;
+    number = number_;
+
+    dfs(0, 0);
+    if (answer > 8)
+        return -1;
+    else
+        return answer;
+}
