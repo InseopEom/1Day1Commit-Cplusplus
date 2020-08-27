@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+ int palindromeMaxLength(string s, int left, int right) {
+        int L = left; int R = right;
+        
+        while( L >=0 && R < s.length() && s[L] == s[R] ) {
+            L--;
+            R++;
+        }
+
+        return R-L-1;
+    }
+int solution(string s)
+{
+     int length = s.length();
+        
+        int len = 1;
+        for (int i = length; i >= 0; i--) {
+            len = max(len,palindromeMaxLength(s,i,i)); // palindrome이 홀수일때 길이
+            len = max(len,palindromeMaxLength(s,i,i+1)); // palindrome이 짝수일때 길이
+        }
+
+        return len;
+}
