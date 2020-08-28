@@ -1,0 +1,24 @@
+#include <string>
+#include <vector>
+#include<algorithm>
+using namespace std;
+
+vector<int> solution(int n, int s) {
+    vector<int> answer(n,0);
+        vector<int> noanswer;
+
+    if(n>s){
+        noanswer.push_back(-1);
+        return noanswer;
+    }
+   int num = s/n;
+    int na =s%n;
+        for(int i=0; i<n; i++)
+            answer[i]=num;
+        for(int i=0; i<na; i++)
+            answer[i] +=1;
+        
+        sort(answer.begin(), answer.end());
+    
+    return answer;
+}
