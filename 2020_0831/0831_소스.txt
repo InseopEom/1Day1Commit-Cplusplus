@@ -1,0 +1,25 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+#include<iostream>
+#include<sstream>
+using namespace std;
+
+string solution(string s) {
+    string answer = "";
+    vector<int> num;
+    stringstream ss(s);
+    int min, max =0;
+    while(ss>>s){
+       
+        int a = atoi(s.c_str());
+        num.push_back(a);
+    }
+    
+    min=*min_element(num.begin(), num.end()); 
+    max=*max_element(num.begin(), num.end());
+    
+            answer= to_string(min) + " " + to_string(max);
+
+    return answer;
+}
