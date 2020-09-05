@@ -1,0 +1,18 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+using namespace std;
+
+vector<int> solution(vector<int> array, vector<vector<int>> commands) {
+    vector<int> answer;
+    vector<int> tmparray;
+    for(int i=0; i<commands.size();i++){
+            tmparray =array;        
+      sort(tmparray.begin() + commands[i][0]-1 , tmparray.begin() + commands[i][1]);
+        cout<<tmparray[0]<<tmparray[1]<<tmparray[2]<<tmparray[3]<<endl;
+            answer.push_back(tmparray[commands[i][0] + commands[i][2]-2]);
+    }
+    
+    return answer;
+}
